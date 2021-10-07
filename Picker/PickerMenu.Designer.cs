@@ -35,6 +35,7 @@ namespace Picker
             this.btnStart = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@ namespace Picker
             // 
             // timer1
             // 
-            this.timer1.Interval = 200;
+            this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // btnStart
@@ -80,6 +81,7 @@ namespace Picker
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnStart);
             this.panel1.Controls.Add(this.label1);
@@ -88,6 +90,19 @@ namespace Picker
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(435, 450);
             this.panel1.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(163, 244);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 40);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "label3";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PickerMenu
             // 
@@ -115,6 +130,7 @@ namespace Picker
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
     }
 }
 
