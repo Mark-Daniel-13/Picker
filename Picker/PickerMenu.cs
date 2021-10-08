@@ -13,7 +13,10 @@ namespace Picker
     public partial class PickerMenu : Form
     {
         bool isStart = false;
-        const int MYACTION_HOTKEY_ID = 1;//start
+        const int MYACTION_HOTKEY_ID_W = 26;//start
+        const int MYACTION_HOTKEY_ID_A = 25;//start
+        const int MYACTION_HOTKEY_ID_S = 24;//start
+        const int MYACTION_HOTKEY_ID_D = 23;//start
         const int MYACTION_HOTKEY_ID_MOVEPSTN_LEFT = 2;//move position
         const int MYACTION_HOTKEY_ID_MOVEPSTN_RIGHT = 3;//move position
         const int MYACTION_HOTKEY_ID_SPIDER = 4;//spider
@@ -49,7 +52,10 @@ namespace Picker
             // ALT+CTRL = 1 + 2 = 3 , CTRL+SHIFT = 2 + 4 = 6...
             RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID_MOVEPSTN_LEFT, 1, (int)Keys.Left);
             RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID_MOVEPSTN_RIGHT, 1, (int)Keys.Right);
-            RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID, 1, (int)Keys.F);
+            RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID_W, 4,(int)Keys.Space);
+            RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID_A, 4, (int)Keys.A);
+            RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID_S, 4, (int)Keys.S);
+            RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID_D, 4, (int)Keys.D);
             RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID_WOLF, 1, (int)Keys.NumPad1);
             RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID_WOLFB, 1, (int)Keys.NumPad2);
             RegisterHotKey(this.Handle, MYACTION_HOTKEY_ID_SPIDER, 1, (int)Keys.NumPad3);
@@ -72,7 +78,7 @@ namespace Picker
 
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == 0x0312 && m.WParam.ToInt32() == MYACTION_HOTKEY_ID)
+            if ((m.Msg == 0x0312 && m.WParam.ToInt32() == MYACTION_HOTKEY_ID_W) || (m.Msg == 0x0312 && m.WParam.ToInt32() == MYACTION_HOTKEY_ID_S) || (m.Msg == 0x0312 && m.WParam.ToInt32() == MYACTION_HOTKEY_ID_A) || (m.Msg == 0x0312 && m.WParam.ToInt32() == MYACTION_HOTKEY_ID_D))
             {
                 isStart = !isStart;
                 if (!isStart)
@@ -129,7 +135,7 @@ namespace Picker
                 this.Cursor = new Cursor(Cursor.Current.Handle);
                 Cursor.Position = new Point(selectedCords.X, selectedCords.Y);
             }
-            label3.Text = string.Format("{0}   {1}", MousePosition.X, MousePosition.Y);
+            //label3.Text = string.Format("{0}   {1}", MousePosition.X, MousePosition.Y);
             base.WndProc(ref m);
         }
 
@@ -187,6 +193,11 @@ namespace Picker
                 else {
                     label1.Text = "N/A";
                 }
+
+                Random rand = new Random();
+                int newTickVal = rand.Next(450,600);
+                timer1.Interval = newTickVal;
+                label3.Text = newTickVal.ToString();
                 label2.Text = string.Format("{0}-{1}-{2}", c.R, c.G, c.B);
             }
         }
