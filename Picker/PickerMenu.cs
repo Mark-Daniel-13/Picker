@@ -90,6 +90,7 @@ namespace Picker
                 {
                     timer1.Stop();
                     btnStart.Text = "Start";
+                    this.BackColor = Color.White;
                 }
             } else if (m.Msg == 0x0312 && m.WParam.ToInt32() == MYACTION_HOTKEY_ID_MOVEPSTN_LEFT) {
                 currentPosition = (currentPosition != 1) ? currentPosition - 1 : 1;
@@ -214,7 +215,7 @@ namespace Picker
             {
                 timer1.Stop();
                 isStart = false;
-                btnStart.Text = "Start";
+                btnStart.Text = "Start"; 
             }
         }
     }
